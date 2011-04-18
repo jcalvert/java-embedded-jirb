@@ -60,9 +60,9 @@ public class CommandSession extends HashMap {
 			return returnValue;
 		}catch(Exception e)
 		{
-			log.error("Error ",e);
 			if(!e.getMessage().contains("unexpected"))
 			{
+				log.error("Error ",e);
 				commandBuffer = new StringBuilder();
 				throw e;
 			}else{
