@@ -12,6 +12,8 @@ import org.jruby.embed.LocalContextScope;
 import org.jruby.embed.LocalVariableBehavior;
 import org.jruby.embed.ParseFailedException;
 import org.jruby.embed.ScriptingContainer;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 public class CommandSession extends HashMap {
 	
@@ -28,6 +30,8 @@ public class CommandSession extends HashMap {
 	Map<String,Object> beans;
 	
 	public boolean needToLoadBeans = true;
+	
+	final static Logger log = LoggerFactory.getLogger(CommandSession.class);
 	
 //	Pattern f1 = Pattern.compile("{");
 //	Pattern f2 = Pattern.compile("}");
@@ -56,6 +60,7 @@ public class CommandSession extends HashMap {
 			return returnValue;
 		}catch(Exception e)
 		{
+			log.error("Error ",e);
 			if(!e.getMessage().contains("unexpected"))
 			{
 				commandBuffer = new StringBuilder();

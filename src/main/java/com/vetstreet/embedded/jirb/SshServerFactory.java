@@ -94,7 +94,7 @@ public class SshServerFactory implements ApplicationContextAware, InitializingBe
 	}
     
     public void stop() throws Exception {
-        if (start) {
+        if (start && server != null) {
             server.stop();
         }
     }

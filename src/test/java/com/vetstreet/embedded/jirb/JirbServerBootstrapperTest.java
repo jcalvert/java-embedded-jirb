@@ -34,46 +34,11 @@ public class JirbServerBootstrapperTest {
 	
 	@Test
 	public void testJirb() throws Exception {
-		//System.out.println("DIE");
-		
-	//	System.
-		//Main.main(new String[]{"-e","require 'irb'", "-e","IRB.start('')"});
-		//Main main = new Main();
-		//main.run(new String[]{"-e","require 'irb'\nIRB.start(__FILE__)"});
-		
-
 		System.out.println("STARTED");
-		
 		Thread.sleep(10000);		
 		factory.stop();
 		log.info("Waitin!");
 		Thread.sleep(5000);
-//		
-		
-		
-//	    <bean id="sshServer" class="org.apache.sshd.SshServer" factory-method="setUpDefaultServer" scope="prototype">
-//        <property name="port" value="${sshPort}"/>
-//        <property name="host" value="${sshHost}"/>
-//        <property name="shellFactory">
-//            <bean class="org.apache.karaf.shell.ssh.ShellFactoryImpl">
-//                <property name="commandProcessor" ref="commandProcessor"/>
-//            </bean>
-//        </property>
-//        <property name="commandFactory">
-//            <bean class="org.apache.karaf.shell.ssh.ShellCommandFactory">
-//                <property name="commandProcessor" ref="commandProcessor"/>
-//            </bean>
-//        </property>
-//        <property name="keyPairProvider" ref="keyPairProvider"/>
-//        <property name="passwordAuthenticator" ref="passwordAuthenticator"/>
-//    </bean>
-//	    <bean id="keyPairProvider" class="org.apache.sshd.server.keyprovider.SimpleGeneratorHostKeyProvider">
-//        <property name="path" value="${hostKey}"/>
-//    </bean>
-//    <bean id="passwordAuthenticator" class="org.apache.sshd.server.jaas.JaasPasswordAuthenticator">
-//        <property name="domain" value="${sshRealm}"/>
-//    </bean>		
-		
 	}
 
 }

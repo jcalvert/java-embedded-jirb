@@ -4,11 +4,11 @@
 
   <groupId>com.vetstreet</groupId>
   <artifactId>embedded-jirb</artifactId>
-  <version>0.3.0</version>
+  <version>0.3.1</version>
   <packaging>bundle</packaging>
 
   <name>Embedded jIRB</name>
-  <url>http://maven.apache.org</url>
+  <url>https://github.com/mmah/java-embedded-jirb</url>
 
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -21,6 +21,7 @@
     		<version>3.0.3.RELEASE</version>
     		<type>jar</type>
     		<scope>compile</scope>
+    		<optional>true</optional>
     	</dependency>
     	<dependency>
     		<groupId>org.springframework</groupId>
@@ -28,6 +29,7 @@
     		<version>3.0.3.RELEASE</version>
     		<type>jar</type>
     		<scope>compile</scope>
+    		<optional>true</optional>
     	</dependency>
     	<dependency>
     		<groupId>junit</groupId>
@@ -50,12 +52,14 @@
     		<artifactId>spring-context</artifactId>
     		<version>3.0.3.RELEASE</version>
     		<type>jar</type>
+    		<optional>true</optional>
     	</dependency>
     	<dependency>
     		<groupId>org.springframework</groupId>
     		<artifactId>spring-context-support</artifactId>
     		<version>3.0.3.RELEASE</version>
     		<type>jar</type>
+    		<optional>true</optional>
     	</dependency>
 
 <!--    	<dependency>-->
@@ -135,13 +139,7 @@
       		<version>3.0.3.RELEASE</version>
       		<type>jar</type>
       		<scope>compile</scope>
-      	</dependency>
-      	<dependency>
-      		<groupId>org.springframework.security</groupId>
-      		<artifactId>spring-security-taglibs</artifactId>
-      		<version>3.0.3.RELEASE</version>
-      		<type>jar</type>
-      		<scope>compile</scope>
+      		<optional>true</optional>
       	</dependency>
   </dependencies>
       <build>
@@ -155,12 +153,17 @@
 <!--                    <target>1.6</target>-->
 <!--                </configuration>-->
             </plugin>
- 
-      <plugin>
+            
+            <plugin>
         <groupId>org.apache.felix</groupId>
         <artifactId>maven-bundle-plugin</artifactId>
         <version>2.1.0</version>
         <extensions>true</extensions>
+        <configuration>
+        <instructions>   
+        	<Import-Package>org.springframework.security.*;resolution:="optional",*</Import-Package>			
+		</instructions>
+        </configuration>
       </plugin>
             
   		<plugin>
@@ -181,18 +184,23 @@
   			<artifactId>dependency-maven-plugin</artifactId>
   			<version>1.0</version>
   		</plugin>
+  		<plugin>
+  			<groupId>org.apache.karaf.tooling</groupId>
+  			<artifactId>features-maven-plugin</artifactId>
+  			<version>2.1.0</version>
+  		</plugin>
         </plugins>
     </build> 
         <distributionManagement>
   <repository>
-    <id>vs-releases</id>
-    <name>Vetstreet Releases</name>
-    <url>${repo.url}</url>
+    <id>releases</id>
+    <name>Releases</name>
+    <url>${releases.url}</url>
   </repository>
   <snapshotRepository>
-      <id>vs-releases</id>
-      <name>Vetstreet Snapshots</name>
-      <url>${repo.url}</url>
+      <id>snapshots</id>
+      <name>Snapshots</name>
+      <url>${snapshots.url}</url>
   </snapshotRepository>  
   </distributionManagement>
 	<reporting>
